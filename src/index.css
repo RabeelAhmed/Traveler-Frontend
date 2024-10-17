@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background-color: #f1f5f9;
+    background-image: url("https://static.vecteezy.com/system/resources/previews/004/929/456/non_2x/travel-destination-background-and-template-design-with-travel-destinations-and-famous-landmarks-and-attractions-for-tourism-let-s-go-travel-illustration-vector.jpg");
+    background-size: cover;
+    /* background-position: center;  */
+    background-repeat: no-repeat; 
+}
