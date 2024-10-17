@@ -23,7 +23,7 @@ export default function Account() {
       value={userData["username"] || ""}
       name='username'
       placeholder='Username'
-      className='p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-transparent' // Set bg-transparent here
+      className='p-1 px-2 appearance-none outline-none w-full text-gray-800 bg-transparent'
     />
   </div>
 </div>
