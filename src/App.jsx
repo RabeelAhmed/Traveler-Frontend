@@ -5,7 +5,6 @@ import StepperControl from "./components/StepperControl";
 import Account from "./components/steps/Account";
 import Detail from "./components/steps/Detail";
 import Final from "./components/steps/Final";
-import Payment from "./components/steps/Payment";
 import { StepperContext } from "./contexts/StepperContext";
 
 function App() {

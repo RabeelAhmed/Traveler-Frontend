@@ -38,11 +38,11 @@ export default function Detail() {
       <h2 className="text-xl font-bold mb-4 text-black">
         Select your Interests
       </h2>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-3 gap-4">
         {interests.map((interest) => (
           <label
             key={interest}
-            className={`flex items-center cursor-pointer p-2 border-2 rounded-md transition-colors duration-300 ${
+            className={`flex items-center cursor-pointer p-2 border-2 rounded-xl transition-colors duration-300 ${
               selectedInterests.includes(interest)
                 ? "bg-green-400 text-white border-green-400"
                 : "border-gray-300 text-black"
@@ -54,7 +54,7 @@ export default function Detail() {
               onChange={() => handleCheckboxChange(interest)}
               className="hidden"
             />
-            <span className="ml-2">{interest}</span>
+            <span className="w-full text-center">{interest}</span>
           </label>
         ))}
       </div>
