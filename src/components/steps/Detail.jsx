@@ -35,7 +35,7 @@ export default function Detail() {
 
   return (
     <div className="flex flex-col p-6 bg-white shadow-lg rounded-lg">
-      <h2 className="text-xl font-bold mb-4 text-black">
+      <h2 className="text-2xl font-bold text-green-600 mb-6">
         Select your Interests
       </h2>
       <div className="grid grid-cols-3 gap-4">

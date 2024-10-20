@@ -1,10 +1,17 @@
 import { useState } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+  useLocation,
+} from "react-router-dom"; // Import necessary components from react-router-dom
 import Stepper from "./components/Stepper";
 import StepperControl from "./components/StepperControl";
-
 import Account from "./components/steps/Account";
 import Detail from "./components/steps/Detail";
 import Final from "./components/steps/Final";
+import Login from "./components/steps/Login";
 import { StepperContext } from "./contexts/StepperContext";
 
 function App() {
@@ -32,39 +39,45 @@ function App() {
 
     direction === "next" ? newStep++ : newStep--;
 
-    // check if steps are within bounds
-
+    // Check if steps are within bounds
     newStep > 0 && newStep <= steps.length && setCurrentStep(newStep);
   };
 
   return (
-    <div className="md:w-1/2 mx-auto shadow-xl rounded-2xl pb-2 bg-white">
-      {/* Stepper */}
-      <div className="container horizontal mt-4">
-        <Stepper steps={steps} currentStep={currentStep} />
-
-        {/* Display Components */}
-        <div className="my-4 p-8">
-          <StepperContext.Provider
-            value={{
-              userData,
-              setUserData,
-              finalData,
-              setFinalData,
-            }}
-          >
-            {displaySteps(currentStep)}
-          </StepperContext.Provider>
+    <Router>
+      <StepperContext.Provider
+        value={{
+          userData,
+          setUserData,
+          finalData,
+          setFinalData,
+        }}
+      >
+        <div className="xs:w-1/2 sm:w-1/2 md:w-1/2 mx-auto shadow-xl rounded-2xl pb-2 bg-white">
+          <div className="container horizontal mt-4">
+            {/* Only show Stepper if not on Login page */}
+            <Routes>
+              <Route path="/login" element={<Login />} />
+              <Route
+                path="/register"
+                element={
+                  <>
+                    <Stepper steps={steps} currentStep={currentStep} />
+                    <div className="my-4 p-8">{displaySteps(currentStep)}</div>
+                    <StepperControl
+                      handlerClick={handlerClick}
+                      currentStep={currentStep}
+                      steps={steps}
+                    />
+                  </>
+                }
+              />
+              <Route path="/" element={<Navigate to="/register" />} />
+            </Routes>
+          </div>
         </div>
-      </div>
-
-      {/* StepperControl */}
-      <StepperControl
-        handlerClick={handlerClick}
-        currentStep={currentStep}
-        steps={steps}
-      />
-    </div>
+      </StepperContext.Provider>
+    </Router>
   );
 }
 

@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom"; // Import Link for navigation
 import { StepperContext } from "../../contexts/StepperContext";
 
 export default function Account() {
@@ -10,7 +11,7 @@ export default function Account() {
   };
 
   return (
-    <div className="flex flex-col space-y-4">
+    <form className="flex flex-col space-y-4">
       {/* Name Field */}
       <div className="w-full mx-2 flex-1">
         <div className="font-bold h-6 mt-3 text-gray-500 text-xs leading-8 uppercase">
@@ -84,11 +85,11 @@ export default function Account() {
       <div className="mt-4 text-center">
         <p className="text-sm text-gray-500">
           Already have an account?{" "}
-          <a href="/" className="text-blue-500 hover:underline">
+          <Link to="/login" className="text-blue-500 hover:underline">
             Login
-          </a>
+          </Link>
         </p>
       </div>
-    </div>
+    </form>
   );
 }
